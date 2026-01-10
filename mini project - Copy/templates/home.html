@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Project Hub</title>   
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/assets/images/project.png">   
+</head>
+<body>
+<div class="container">
+    <h1>🚀 Python Mini Project Hub</h1>
+    <p>Select a project below to explore:</p>
+
+    <div class="card-container">
+        <div class="card">
+            <h2>🎬 Video Player</h2>
+            <p>Play and manage your video files.</p>
+            <a href="{{ url_for('video_player') }}">Open Video Player</a>
+        </div>
+
+        <div class="card">
+            <h2>🎵 Audio Player</h2>
+            <p>Upload, play, and delete audio files easily.</p>
+            <a href="{{ url_for('audio_player') }}">Open Audio Player</a>
+        </div>
+
+        <div class="card">
+            <h2>📝 Task Manager</h2>
+            <p>Manage your daily to-do list efficiently.</p>
+            <a href="{{ url_for('todo') }}">Open Task Manager</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

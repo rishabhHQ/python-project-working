@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎵 Audio Player</h1>
+
+        <!-- Upload -->
+        <form action="/upload_audio" method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="audioFile" accept="audio/*" required>
+            <button type="submit">Upload Audio</button>
+        </form>
+
+        <!-- List -->
+        <ul>
+            {% for audio in audios %}
+            <li>
+                {{ audio }}
+                <form action="{{ url_for('delete_audio', filename=audio) }}" method="POST"
+                    onsubmit="return confirm('Delete {{audio}}?')">
+                    <button type="submit" class="delete-btn">🗑️</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Player -->
+        <audio id="audioPlayer" controls>
+            {% if audios %}
+            <source src="{{ url_for('audio', filename=audios[0]) }}" type="audio/mpeg">
+            {% endif %}
+            Your browser does not support audio.
+        </audio>
+
+        <select id="audioSelect" onchange="changeAudio(this.value)">
+            {% for audio in audios %}
+            <option value="{{ url_for('audio', filename=audio) }}">{{ audio }}</option>
+            {% endfor %}
+        </select>
+
+        <a href="/" class="back-btn">⬅️ Back Home</a>
+    </div>
+
+    <script>
+        function changeAudio(src) {
+            const player = document.getElementById("audioPlayer");
+            player.src = src;
+            player.play();
+        }
+    </script>
+</body>
+
+</html>
