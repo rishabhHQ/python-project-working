@@ -1,5 +1,5 @@
 ## About The Project:
-- noic..  
+  This is a small system based python project. In this...  
 ## How to use this project:
 **Steps:**
 1) Firstly Download all the files of HTML, CSS, JS, Python, etc
