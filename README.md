@@ -1,5 +1,5 @@
 ## About The Project:
-  This is a small system based python project. In this...  
+  This is a small system based python project. In this you have basic playback of audio and video and a to-do list.  
 ## How to use this project:
 **Steps:**
 1) Firstly Download all the files of HTML, CSS, JS, Python, etc
