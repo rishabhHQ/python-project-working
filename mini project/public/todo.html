@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>📝 Task Management App</h1>
+
+    <form action="/add_task" method="POST" class="upload-form">
+        <input type="text" name="task" placeholder="Enter a new task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h3>Current Tasks:</h3>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task }}
+            <form action="{{ url_for('delete_task', task=task) }}" method="POST" style="display:inline;">
+                <button class="delete-btn">❌</button>
+            </form>
+            <form action="/update_task" method="POST" style="display:inline;">
+                <input type="hidden" name="old_task" value="{{ task }}">
+                <input type="text" name="new_task" placeholder="Edit..." required>
+                <button>✏️</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/" class="back-btn">⬅️ Back Home</a>
+</div>
+</body>
+</html>
